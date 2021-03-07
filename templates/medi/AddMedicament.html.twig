@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block title %}   Formulaire  {% endblock %}
+
+
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+    {% block content %}
+        <br>
+        <center><h2 style="color: #2586f5;">Ajouter Médicaments</h2></center>
+        <br>
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-success" > Ajouter</button>
+        {{ form_end(form) }}
+
+    {% endblock %}
+
+
+
+
+
+
+
+

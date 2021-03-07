@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block title %}   Liste  {% endblock %}
+{% block content %}
+    <br>
+    <div  class="m-4">
+        <center><h2 style="color: #2586f5;">Liste des Médicaments</h2></center>
+
+    </div>
+    <br>
+    <a href="{{ path('AddMedicament') }}" class=pull-right >+Ajouter Médicament</a>
+    <br> <br>
+
+    <table class="table table-striped table-hover">
+        <thead style="backgournd: #2586f5;">
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Stock</th>
+            <th >Actions</th>
+        </tr>
+        </thead>
+        <tbody> <!-- table body -->
+        {% for i in medic %}
+            <tr>
+                <td> {{ i.id}}</td>
+                <td>{{ i.code }}</td>
+                <td>{{ i.nom }}</td>
+                <td>{{ i.prix }}</td>
+                <td>{{ i.stock }}</td>
+
+                <td>
+                    <a href="{{ path('editmed',{'id':i.id}) }}"> Update </a>
+                |
+                <a href="{{ path('remove_medicament',{'id':i.id}) }}">Remove</a> </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}
