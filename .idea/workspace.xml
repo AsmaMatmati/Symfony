@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed7afef-ff10-4626-a210-6dacd3008d2c" name="Default Changelist" comment="" />
+    <list default="true" id="3ed7afef-ff10-4626-a210-6dacd3008d2c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210306143109.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MediController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrdoController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Medicament.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Ordonnance.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/MedicamentRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/OrdonnanceRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/medi/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medi/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +45,9 @@
         <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -128,6 +159,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1p9e73GqP0Agcz0hSQtJTPyY7N5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -148,15 +180,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\Pharmacie\public\img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp\www\Pharmacie\public\img" />
       <recent name="C:\wamp\www\Pharmacie\templates" />
       <recent name="C:\wamp\www\Pharmacie\templates\medi" />
       <recent name="C:\wamp\www\Pharmacie\public\img\photos" />
       <recent name="C:\wamp\www\Pharmacie\public" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp\www\Pharmacie\public\img" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -179,21 +211,33 @@
       <workItem from="1615033834331" duration="8420000" />
       <workItem from="1615058514756" duration="9920000" />
       <workItem from="1615125762562" duration="3953000" />
+      <workItem from="1615212044927" duration="18098000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="394" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614857652042">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="394" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1614857652042" />
-    <state x="476" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1614939899575">
+    <state x="476" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1615227647555">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="476" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1614939899575" />
+    <state x="476" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1615227647555" />
     <state x="321" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1614859361526">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

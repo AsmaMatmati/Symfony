@@ -3,10 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MedicamentRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MedicamentRepository::class)
@@ -21,38 +18,24 @@ class Medicament
     private $id;
 
     /**
-     * @Assert\NotBlank(message="champs code obligatoire")
      * @ORM\Column(type="integer")
      */
     private $code;
 
     /**
-     * @Assert\NotBlank(message="champs nom obligatoire")
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $name;
 
     /**
-     * @Assert\NotBlank(message="champs prix obligatoire")
      * @ORM\Column(type="integer")
      */
     private $prix;
 
     /**
-     * @Assert\NotBlank(message="champs stock obligatoire")
      * @ORM\Column(type="integer")
      */
     private $stock;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Ordonnance::class, mappedBy="Medicament")
-     */
-    private $ordonnances;
-
-    public function __construct()
-    {
-        $this->ordonnances = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -71,14 +54,14 @@ class Medicament
         return $this;
     }
 
-    public function getNom(): ?string
+    public function getName(): ?string
     {
-        return $this->nom;
+        return $this->name;
     }
 
-    public function setNom(string $nom): self
+    public function setName(string $name): self
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
@@ -103,33 +86,6 @@ class Medicament
     public function setStock(int $stock): self
     {
         $this->stock = $stock;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Ordonnance[]
-     */
-    public function getOrdonnances(): Collection
-    {
-        return $this->ordonnances;
-    }
-
-    public function addOrdonnance(Ordonnance $ordonnance): self
-    {
-        if (!$this->ordonnances->contains($ordonnance)) {
-            $this->ordonnances[] = $ordonnance;
-            $ordonnance->addMedicament($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrdonnance(Ordonnance $ordonnance): self
-    {
-        if ($this->ordonnances->removeElement($ordonnance)) {
-            $ordonnance->removeMedicament($this);
-        }
 
         return $this;
     }

@@ -39,7 +39,7 @@ class MediController extends AbstractController
             );
         }
 
-        $ob1->series(array(array('type' => 'pie', 'name' => 'Browser share', 'data' => $data)));
+        $ob1->series(array(array('type' => 'pie', 'name' => 'Stock', 'data' => $data)));
 
         return $this->render('medi/index.html.twig', [
             'controller_name' => 'MediController','piechart'=>$ob1

@@ -12,14 +12,12 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Ordonnance[]    findAll()
  * @method Ordonnance[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-
 class OrdonnanceRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Ordonnance::class);
     }
-
 
     // /**
     //  * @return Ordonnance[] Returns an array of Ordonnance objects
