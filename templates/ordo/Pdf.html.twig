@@ -1,0 +1,41 @@
+
+{#<div class=""><img src="{{ asset("../../public/img/Logo1.jpg") }}" alt="" height="60" width="60"></div>#}
+<div >
+    <font size="-2"><b>Date consultation: </b>{{ ord.Consultation.dateC|date('Y-m-d') }}</font><br>
+    <font size="-2"><b>Nom médecin: </b>  {{ ord.Medecin.nomMedecin }} {{ ord.Medecin.prenomMed }}</font><br>
+    <font size="-2"><b>Téléphone: </b>   {{ ord.Medecin.NumTel }}</font><br>
+
+</div>
+
+
+<center><h3 style="color:#379392;">Ordonnance</h3></center>
+<br> <br>
+<div><CENTER>
+        <font size="-1">  <b>Nom Patient:</b> {{ ord.Patient.nom }}
+        {{ ord.Patient.prenom }}
+    </CENTER>
+    <br> <br><br>
+</div>
+<table class="table table-striped table-hover">
+
+    <tr>
+        <th><font size="-1">Medicament</font></th>
+        <th>      </th>
+        <th><font size="-1">Descrption</font></th>
+
+    </tr>
+    <tbody> <!-- table body -->
+
+        <tr>
+            <td><font size="-1">{{ ord.medicaments.name }}</font></td>
+             <td>  </td>
+            <td colspan="5"{{ ord.description }}
+            <p><font size="-1">{{ ord.NbrDoses }} dose(s),</font></p>
+            <p> <font size="-1">{{ ord.NbrFois }} fois par jour ,</font></p>
+            <p><font size="-1">pendant  {{ ord.NbrJrs }} jours,</font></p>
+            <p><font size="-1">{{ ord.NbrPaquets }}  paquet(s)</font></p>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

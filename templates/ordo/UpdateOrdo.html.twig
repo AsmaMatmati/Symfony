@@ -2,22 +2,33 @@
 {% block title %}   Update  {% endblock %}
  {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block content %}
-    <br>
+    <script src="{{ asset("https://kit.fontawesome.com/ae15aac6fb.js") }}" crossorigin="anonymous"></script>
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+
+        <br>
     <center><h2 style="color: #2586f5;">Modifier des Ordonnances</h2></center>
     <br>
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
 
     {{ form_widget(form) }}
 <table>
     <tr>
     <td><button  type="submit" class="btn btn-success" > Save </button></td>
-        <td style="width:900px;"></td>
+        <td style="width:750px;"></td>
 
         <td><a href="{{ path('ShowOrdo') }}">Back to the list</a></td>
 
     </tr>
 </table>
     {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+    <br> <br> <br> <br>
 
 {% endblock %}
 

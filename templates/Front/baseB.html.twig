@@ -1,0 +1,58 @@
+<html lang="fr">
+<head>
+    {% block css %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="robots" content="all,follow">
+        <!-- Bootstrap CSS-->
+        <link rel="stylesheet" href="{{ asset('back/vendor/bootstrap/css/bootstrap.min.css') }}">
+        <!-- Font Awesome CSS-->
+        <link rel="stylesheet" href="{{ asset('back/vendor/font-awesome/css/font-awesome.min.css') }}">
+        <!-- Fontastic Custom icon font-->
+        <link rel="stylesheet" href="{{ asset('back/css/fontastic.css') }}">
+        <!-- Google fonts - Poppins -->
+        <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Poppins:300,400,700') }}">
+        <!-- theme stylesheet-->
+        <link rel="stylesheet" href="{{ asset('back/css/style.default.css ') }}" id="theme-stylesheet">
+        <!-- Custom stylesheet - for your changes-->
+        <link rel="stylesheet" href="{{ asset('back/css/custom.css') }}">
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="{{ asset('back/img/favicon.ico') }}">
+    {% endblock %}
+    {% block js %}
+
+        <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="{{ asset('https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}"></script><![endif]-->
+
+        <script src="{{asset ('back/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('back/vendor/popper.js/umd/popper.min.js')}}"> </script>
+        <script src="{{ asset('back/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('back/vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
+        <script src="{{ asset('back/vendor/chart.js/Chart.min.js') }}"></script>
+        <script src="{{ asset('back/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+
+        <script src="{{ asset('back/js/front.js') }}"></script>
+        <script src="{{ asset('vendor/popper.js/umd/popper.min.js') }}"> </script>
+        <script src="{{ asset('js/front.js') }}"></script>
+    {% endblock %}
+
+
+
+</head>
+
+
+
+
+{% block body %}
+    <body>
+
+    </body>
+{% endblock %}
+
+
+
+</html>

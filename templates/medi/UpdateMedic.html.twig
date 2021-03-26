@@ -2,10 +2,12 @@
 {% block title %}   Update  {% endblock %}
  {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block content %}
+  <script src="{{ asset("https://kit.fontawesome.com/ae15aac6fb.js") }}" crossorigin="anonymous"></script>
+
   <br>
   <center><h2 style="color: #2586f5;">Modifier des Médicaments</h2></center>
   <br>
-    {{ form_start(form) }}
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
 
     {{ form_widget(form) }}
     <button type="submit" class="btn btn-success" > Save </button>

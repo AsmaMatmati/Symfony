@@ -14,10 +14,11 @@ class MedicamentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom',TextareaType::class,['attr'=>['placeholder'=>"Nom Médicament"]])
+            ->add('name',TextareaType::class,['attr'=>['placeholder'=>"Nom Médicament"]])
             ->add('code',TextareaType::class,['attr'=>['placeholder'=>"Code Médicament"]])
             ->add('prix',TextareaType::class,['attr'=>['placeholder'=>"Prix Médicament"]])
-            ->add('stock',TextareaType::class,['attr'=>['placeholder'=>"Stock Médicament"]])
+            ->add('stock',TextareaType::class,['attr'=>['placeholder'=>"Stock Médicament"]]
+            )
         ;
     }
 

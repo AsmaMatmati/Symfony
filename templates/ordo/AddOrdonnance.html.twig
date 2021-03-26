@@ -4,14 +4,26 @@
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
     {% block content %}
+        <script src="{{ asset("https://kit.fontawesome.com/ae15aac6fb.js") }}" crossorigin="anonymous"></script>
+
+
+        <div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+
         <br>
         <center><h2 style="color: #2586f5;">Ajouter Ordonnance</h2></center>
         <br>
-        {{ form_start(form) }}
+        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
 
         {{ form_widget(form) }}
+        <br>
         <button type="submit" class="btn btn-success" > Ajouter</button>
         {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+        <br> <br> <br> <br>
 
     {% endblock %}
 

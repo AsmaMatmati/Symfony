@@ -47,4 +47,50 @@ class OrdonnanceRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    /*  public function OrderByMedDQL()
+      {
+          $em=>$this->getEntityManager();
+          $query = $em->createQuery('select s from App\Entity\Medicament s order by s.Name ASC ');
+          return $query->getResult();
+
+      }
+  */
+
+
+ /*   public function ListOrdonOrderByDate()
+    {
+        return $this->createQueryBuilder('i')
+            ->join('i.Consultation','c')
+            ->addSelect('c')
+            ->where('c.dateC=:dateC')
+            ->orderBy('c.dateC', 'ASC')
+            ->getQuery()
+            ->execute();
+
+
+    }*/
+
+
+    public function recherche($id)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.id LIKE :id')
+            ->setParameter('id', '%'.$id.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+    public function ParDate($dateC)
+    {
+        return $this->createQueryBuilder('i')
+            ->join('i.Consultation','c')
+            ->addSelect('c')
+            ->where('c.dateC=:dateC')
+            ->setParameter('dateC', $dateC )
+            ->getQuery()
+            ->getResult();
+    }
 }

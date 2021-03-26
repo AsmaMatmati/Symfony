@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+{% block title %}   Liste Order By Name {% endblock %}
+{% block content %}
+    <script src="{{ asset("https://kit.fontawesome.com/ae15aac6fb.js") }}" crossorigin="anonymous"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col align-self-center">
+                <br>
+                <div  class="m-4">
+                    <center><h2 style="color: #2586f5;">Liste des Médicaments</h2></center>
+
+                </div>
+                <div class="col-xs-offset-2 col-xs-8">
+                    <input type="text" name="myInput" id="myInput" style="width: 100%" placeholder="Search here" title="Type in a type" class="form-control">
+
+                </div>
+<br>
+                <div class="search-container">
+
+                    <a href="{{ path('Searchi') }}"></a>
+
+                        <button type="submit"><i class="fa fa-search"></i></button>
+
+                </div>
+                <br>
+                <table class="table table-striped table-hover" id="dataTables-example">
+                    <thead style="backgournd: #2586f5;">
+                    <tr>
+                        <th>Id</th>
+                        <th>Code</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Stock</th>
+                        <th >Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody> <!-- table body -->
+                    {% for s in ord %}
+                        <tr>
+                            <td> {{ s.id}}</td>
+                            <td >{{ s.code }}</td>
+                            <td>{{ s.name }}</td>
+                            <td>{{ s.prix }}</td>
+                            <td>{{ s.stock }}</td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br> <br> <br> <br>
+
+
+{% endblock  %}
