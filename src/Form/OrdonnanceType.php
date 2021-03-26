@@ -37,7 +37,7 @@ $builder
             ->add('nbr_jrs')
             ->add('nbr_doses')
             ->add('nbr_fois')
-            ->add('nbr_paquets')
+
 
         ;
     }

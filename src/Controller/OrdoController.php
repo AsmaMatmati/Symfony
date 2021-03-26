@@ -80,7 +80,7 @@ class OrdoController extends AbstractController
 
 
             $medica = $form['Medicaments']->getData();
-            foreach ((array) $medica as $medic) {
+            foreach ( $medica as $medic) {
                 $us1 = $em->getRepository(Medicament::class)->findEntitiesByString($medic);
                 foreach ($us1 as $us1) {
                     $ord->setMedicaments($us1);
@@ -88,7 +88,7 @@ class OrdoController extends AbstractController
             }
 
             $medc = $form['Medecin']->getData();
-            foreach ((array) $medc as $nomm) {
+            foreach ( $medc as $nomm) {
                 $us2 = $em->getRepository(Medecin::class)->findEntitiesByMedecin($nomm);
                 foreach ($us2 as $us2) {
                     $ord->setMedecin($us2);
@@ -97,7 +97,7 @@ class OrdoController extends AbstractController
 
 
             $mec = $form['Medecin']->getData();
-            foreach ((array) $mec as $pre) {
+            foreach ( $mec as $pre) {
                 $usp = $em->getRepository(Medecin::class)->findEntitiesByPreMedecin($pre);
                 foreach ($usp as $usp) {
                     $ord->setMedecin($usp);
@@ -105,7 +105,7 @@ class OrdoController extends AbstractController
             }
 
             $medc = $form['Medecin']->getData();
-            foreach ((array) $medc as $Tel) {
+            foreach ($medc as $Tel) {
                 $ust = $em->getRepository(Medecin::class)->findEntitiesByMedecin($Tel);
                 foreach ($ust as $ust) {
                     $ord->setMedecin($ust);
@@ -114,7 +114,7 @@ class OrdoController extends AbstractController
 
 
             $pat = $form['Patient']->getData();
-            foreach ((array) $pat as $pt) {
+            foreach ($pat as $pt) {
                 $usp = $em->getRepository(Patient::class)->findEntitiesByPatient($pt);
                 foreach ($usp as $usp) {
                     $ord->setPatient($usp);
@@ -122,7 +122,7 @@ class OrdoController extends AbstractController
             }
 
             $pat = $form['Patient']->getData();
-            foreach ((array) $pat as $pt1) {
+            foreach ( $pat as $pt1) {
                 $usp1 = $em->getRepository(Patient::class)->findEntitiesByPrePatient($pt1);
                 foreach ($usp1 as $usp1) {
                     $ord->setPatient($usp1);
@@ -131,15 +131,36 @@ class OrdoController extends AbstractController
 
 
             $cslt = $form['Consultation']->getData();
-            foreach ((array) $cslt as $dt) {
+            foreach ($cslt as $dt) {
                 $us4 = $em->getRepository(Consultation::class)->findEntitiesByDate($dt);
                 foreach ($us4 as $us4) {
                     $ord->setConsultation($us4);
                    //$dt['dateC']->format('Y-m-d');
                 }
             }
-
-
+            $nbj=$form['nbr_jrs']->getData();
+            $nbd=$form['nbr_doses']->getData();
+            $nbf=$form['nbr_fois']->getData();
+            $a=(int)$nbj ;
+            $b=(int)$nbd;
+            $c=(int)$nbf;
+            $paq=$a*$b*$c;
+            if($paq<=24)
+            {
+                $ord->setNbrPaquets(1);
+            }
+            if($paq>24)
+            {
+                $ord->setNbrPaquets(2);
+            }
+            if($paq>48)
+            {
+                $ord->setNbrPaquets(3);
+            }
+            if($paq>72)
+            {
+                $ord->setNbrPaquets(4);
+            }
             $em->persist($ord);
             $em->flush();
             return $this->redirectToRoute("ShowOrdo");
@@ -155,7 +176,6 @@ class OrdoController extends AbstractController
     function Update(Ordonnance $ordo, Request $request)
     {
         $form = $this->createForm(OrdonnanceType::class, $ordo);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -171,58 +191,49 @@ class OrdoController extends AbstractController
 
 
 
+
     /**
-     * @Route("/ParDate{id}", name="ParDate")
+     * @Route ("/ListOrdoByDateDESC", name="ListOrdoByDateDESC")
      */
-    public function ListOrdonOrderBy(OrdonnanceRepository $repository, Request $request, $dateC)
+    public function ListMedicByNameDESC(MedicamentRepository  $repository, Request $request)
     {
-        $odn=$repository->ParDate($dateC);
+        $ord=$this->getDoctrine()->getRepository(Ordonnance::class )->ListOrdoByDateDESC();
         $form=$this->createForm(RechercheType::class);
         $form->handleRequest($request);
+        if($form->isSubmitted())
+        {
+            $dateC=$form->getData()->getDateC();
 
-        if ($form->isSubmitted()){
-            $id=$form->getData()->getDateC();
-            $odnResult=$this->getDoctrine()->getRepository(Ordonnance::class)->recherche($id);
-            return $this->render("ordo/ListOrdonOrderBy.html.twig",array(
-                'odn'=>$odnResult,'form'=>$form->createView()));
+            $odnResult=$this->getDoctrine()->getRepository(Ordonnance::class )->recherche($dateC);
+            return $this->render("ordo/ShowOrdo.html.twig",array('ord'=>$odnResult,'form'=>$form->createView()));
+
         }
-        return $this->render("ordo/ListOrdonOrderBy.html.twig",array(
-            'odn'=>$odn, 'form'=>$form->createView()));
+        return $this->render("ordo/ShowOrdo.html.twig",array('ord'=>$ord,'form'=>$form->createView()));
+
 
     }
-
-
-
 
     /**
-     * @Route("/trie",name="listOrdoOrderBy")
+     * @Route ("/ListOrdoByDateASC", name="ListOrdoByDateASC")
      */
-  /**  public function OrderByMedQB(OrdonnanceRepository $repository)
+    public function ListMedicByNameASC(MedicamentRepository  $repository, Request $request)
     {
+        $ord=$this->getDoctrine()->getRepository(Ordonnance::class )->ListOrdoByDateASC();
+        $form=$this->createForm(RechercheType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted())
+        {
+            $dateC=$form->getData()->getDateC();
 
-            $medi = $repository->OrderByMedQB();
-            return $this->render('medi/ShowMedic.html.twig',
-                ['medi'=>$medi,]);
+            $odnResult=$this->getDoctrine()->getRepository(Ordonnance::class )->recherche($dateC);
+            return $this->render("ordo/ShowOrdo.html.twig",array('ord'=>$odnResult,'form'=>$form->createView()));
+
+        }
+        return $this->render("ordo/ShowOrdo.html.twig",array('ord'=>$ord,'form'=>$form->createView()));
 
 
     }
-*/
 
-    /**
-     * @Route("/listeBy/{name}")
-     */
-    /**public function ListMedicByName(MedicamentRepository $repmed, OrdonnanceRepository $repordo, $name)
-
-    {
-      $Me=$repmed->find($name);
-      $ord=$repordo->ListMedicByName($Me->getName());
-      return $this->render("medi/List.html.twig",[
-          'c'=>$Me,'ord'=>$ord
-          ]);
-
-
-    }
-*/
 
     /**
      * @Route("/PdfOrdo/{id}", name="PdfOrdo", methods={"GET"})

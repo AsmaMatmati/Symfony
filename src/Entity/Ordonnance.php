@@ -47,7 +47,6 @@ class Ordonnance
     private $nbr_fois;
 
     /**
-     * @Assert\NotBlank (message="nbr_paquets est obligatoire")
      * @ORM\Column(type="integer")
      */
     private $nbr_paquets;
@@ -78,7 +77,7 @@ class Ordonnance
 
     public function __construct()
     {
-        $this->medicaments = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -118,6 +117,7 @@ class Ordonnance
     public function setMedicaments($medicaments)
     {
         $this->medicaments = $medicaments;
+        return $this;
     }
 
 

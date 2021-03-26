@@ -10,11 +10,23 @@
             <br>
     <div  class="m-4">
         <center><h2 style="color: #2586f5;">Liste des Ordonnances</h2></center>
-
+        <br><br>
     </div>
     <br>
     <a href="{{ path('AddOrdo') }}" class=pull-right >+Ajouter Ordonnance</a>
-    <br> <br>
+
+
+                <ul class="list-unstyled">
+                    <li><a href="#exampleDropdown" aria-expanded="false" data-toggle="collapse"> Trier Par Date: </a>
+                        <ul id="exampleDropdown" class="collapse list-unstyled ">
+                            <li><a href="{{ path('ListOrdoByDateDESC') }}"> Date (DESC)  </a></li>
+                            <li><a href="{{ path('ListOrdoByDateASC') }}"> Date (ASC)  </a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <br><br>
+
 
     <table class="table table-striped table-hover"  align="left">
         <thead style="backgournd: #2586f5;" >

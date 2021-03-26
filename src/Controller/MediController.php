@@ -27,6 +27,17 @@ class MediController extends AbstractController
         $i=0;$j=0;
         $med=$this->getDoctrine()->getRepository(Medicament::class)->findAll();
         $ord=$this->getDoctrine()->getRepository(Ordonnance::class)->findAll();
+        $em = $this->getDoctrine()->getManager(); //on appelle Doctrine
+        $query = $em->createQuery( //creation de la requête
+            'SELECT sum(m.stock)
+             FROM App\Entity\Medicament m'
+        );
+
+        $somme = $query->getResult();
+        foreach($somme as $s)
+        {
+            //var_dump($s);
+        }
         foreach($med as $v)
         {
             $i++;
@@ -57,7 +68,7 @@ class MediController extends AbstractController
         $ob1->series(array(array('type' => 'pie', 'name' => 'Stock', 'data' => $data)));
 
         return $this->render('medi/index.html.twig', [
-            'controller_name' => 'MediController','piechart'=>$ob1,'nb'=>$i,'nb1'=>$j
+            'controller_name' => 'MediController','piechart'=>$ob1,'nb'=>$i,'nb1'=>$j,"somme"=>$s
         ]);
     }
 
@@ -275,9 +286,4 @@ class MediController extends AbstractController
             'medicament' => $medicament,
             'form' => $form->createView()));
     }
-
-    public function compterStock(){
-        
-    }
-
 }
