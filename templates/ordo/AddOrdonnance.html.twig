@@ -7,6 +7,17 @@
         <script src="{{ asset("https://kit.fontawesome.com/ae15aac6fb.js") }}" crossorigin="anonymous"></script>
 
 
+
+        {% for message in app.flashes('info') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+
+
+
+
         <div class="container">
     <div class="row">
         <div class="col align-self-center">

@@ -42,6 +42,10 @@ class OrdoController extends AbstractController
         $ord = $this->getDoctrine()->getRepository(Ordonnance::class)->find($id);
         $em->remove($ord);
         $em->flush();
+        $this->addFlash(
+            'infos',
+            'Ordennance Supprimée avec succés!'
+        );
         return $this->redirectToRoute('ShowOrdo');
 
     }
@@ -142,7 +146,7 @@ class OrdoController extends AbstractController
             $nbd=$form['nbr_doses']->getData();
             $nbf=$form['nbr_fois']->getData();
             $a=(int)$nbj ;
-            $b=(int)$nbd;
+            $b=(float)$nbd;
             $c=(int)$nbf;
             $paq=$a*$b*$c;
             if($paq<=24)
@@ -161,13 +165,47 @@ class OrdoController extends AbstractController
             {
                 $ord->setNbrPaquets(4);
             }
+            if($paq>96)
+            {
+                $ord->setNbrPaquets(5);
+            }
+            if($paq>120)
+            {
+                $ord->setNbrPaquets(6);
+            }
+            if($paq>144)
+            {
+                $ord->setNbrPaquets(7);
+            }
+            if($paq>168)
+            {
+                $ord->setNbrPaquets(8);
+            }
+            if($paq>192)
+            {
+                $ord->setNbrPaquets(9);
+            }
+            if($paq>216)
+            {
+                $ord->setNbrPaquets(10);
+            }
+            if($paq>240)
+            {
+                $ord->setNbrPaquets(11);
+            }
             $em->persist($ord);
             $em->flush();
+            $this->addFlash(
+                'info',
+                'Ordennance Ajoutée avec succes!');
+
             return $this->redirectToRoute("ShowOrdo");
+
         }
 
         return $this->render('ordo/AddOrdonnance.html.twig', ['form' => $form->createView()]);
     }
+
 
     /**
      * @Route("/edit/{id}", name="edit")
@@ -179,7 +217,10 @@ class OrdoController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Ordennance editée avec succes ');
+
+            $this->addFlash(
+                'info',
+                'Ordennance editée avec succes!');
 
             return $this->redirectToRoute('edit', array('id' => $ordo->getId()));
 
@@ -233,6 +274,29 @@ class OrdoController extends AbstractController
 
 
     }
+
+
+
+
+    /**
+     * @Route ("/listOrdonorderby", name="listOrdonorderby")
+     */
+    public function listOrdonorderby( Request $request)
+    {
+        $odn=$this->getDoctrine()->getRepository(Ordonnance::class)->listOrdonorderbyDate();
+        $form = $this->createForm(RechercheType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted())
+        {
+            $dateC = $form->getData()->getConsultation();
+            $ordResult = $this->getDoctrine()->getRepository(Ordonnance::class)->recherche($dateC);
+            return $this->render('ordo/ListOrdonOrderBy.html.twig', array('odn' => $ordResult,'form' => $form->createView()));
+
+        }
+
+                 return $this->render('ordo/ListOrdonOrderBy.html.twig', array( 'odn' => $odn,'form' => $form->createView()));
+        }
+
 
 
     /**

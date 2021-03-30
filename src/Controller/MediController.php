@@ -83,6 +83,11 @@ class MediController extends AbstractController
         $med = $this->getDoctrine()->getRepository(Medicament::class)->find($id);
         $em->remove($med);
         $em->flush();
+        $this->addFlash(
+            'infos',
+            'Médicament Supprimé avec succés!');
+
+
         return $this->redirectToRoute('ShowMedic');
 
     }
@@ -258,6 +263,10 @@ class MediController extends AbstractController
             else{
             $em->persist($med);
             $em->flush();
+                $this->addFlash(
+                    'info',
+                    'Médicament Ajouté avec succés!');
+
             }
             return $this->redirectToRoute("ShowMedic");
         }
@@ -276,7 +285,9 @@ class MediController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'medicament edit avec succes ');
+            $this->addFlash(
+                'info',
+                'Médicament édité avec succés!');
 
             return $this->redirectToRoute('editmed', array('id' => $medicament->getId()));
 

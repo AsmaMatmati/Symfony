@@ -23,11 +23,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MediController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MediController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OrdoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrdoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Ordonnance.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ordonnance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/OrdonnanceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OrdonnanceType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RechercheType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RechercheType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/OrdonnanceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrdonnanceRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/medi/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medi/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/medi/AddMedicament.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medi/AddMedicament.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/medi/ShowMedic.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medi/ShowMedic.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/medi/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medi/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ordo/AddOrdonnance.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ordo/AddOrdonnance.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ordo/ListOrdonOrderBy.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ordo/ListOrdonOrderBy.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/ordo/ShowOrdo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ordo/ShowOrdo.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ordo/UpdateOrdo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ordo/UpdateOrdo.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,6 +234,9 @@
       <workItem from="1616427524397" duration="39074000" />
       <workItem from="1616700766128" duration="15706000" />
       <workItem from="1616759106275" duration="24082000" />
+      <workItem from="1616870780906" duration="4462000" />
+      <workItem from="1616934412613" duration="19371000" />
+      <workItem from="1617015579686" duration="9689000" />
     </task>
     <servers />
   </component>

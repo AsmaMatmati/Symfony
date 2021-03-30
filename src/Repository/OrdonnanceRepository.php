@@ -89,15 +89,23 @@ class OrdonnanceRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function listOrdonorderbyDate()
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.Consultation','ASC')
+            ->getQuery()
+            ->getResult();
+
+    }
 
     public function recherche($dateC)
     {
         return $this->createQueryBuilder('s')
-            ->where('s.Consultation LIKE :date')
-            ->setParameter('date', '%'.$dateC.'%')
+            ->where('s.Consultation LIKE :dateC')
+            ->setParameter('dateC', '%'.$dateC.'%')
             ->getQuery()
-            ->execute()
-            ;
+            ->execute();
     }
+
 
 }

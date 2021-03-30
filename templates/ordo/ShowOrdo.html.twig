@@ -3,6 +3,18 @@
 {% block content %}
     <script src="{{ asset("https://kit.fontawesome.com/ae15aac6fb.js") }}" crossorigin="anonymous"></script>
 
+
+    {% for message in app.flashes('info') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('infos') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <div class="container">
         <div class="row">
             <div class="col align-self-center">
@@ -13,6 +25,7 @@
         <br><br>
     </div>
     <br>
+
     <a href="{{ path('AddOrdo') }}" class=pull-right >+Ajouter Ordonnance</a>
 
 
@@ -24,12 +37,11 @@
                         </ul>
                     </li>
                 </ul>
+                <br>
 
-                <br><br>
 
-
-    <table class="table table-striped table-hover"  align="left">
-        <thead style="backgournd: #2586f5;" >
+                <table id="ord" class="table table-striped table-hover ">
+                    <thead style="backgournd: #2586f5;" >
         <tr>
             <th>Id</th>
             <th>Nom Medecin</th>
@@ -67,7 +79,8 @@
                 <td>
                     <a href="{{ path('edit',{'id':i.id}) }}"> Update </a>
                     |
-                    <a href="{{ path('Supprimer',{'id':i.id}) }}">Remove</a>
+                    <a href="{{ path('Supprimer',{'id':i.id}) }}"
+                       onclick="return confirm('Etes-vous sûr de supprimer cette Ordonnance?');">Remove</a>
                     |
                     <a href="{{ path('PdfOrdo',{'id':i.id})}}"> Download </a>
                 </td>

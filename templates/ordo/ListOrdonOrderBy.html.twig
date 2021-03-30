@@ -3,21 +3,26 @@
 {% block content %}
     <script src="{{ asset("https://kit.fontawesome.com/ae15aac6fb.js") }}" crossorigin="anonymous"></script>
 
+    {{ form_start(form) }}
 
-    <div class="container">
-        <div class="row">
-            <div class="col align-self-center">
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.Consultation) }}
+        </div>
 
-                <br>
-                <div  class="m-4">
-                    <center><h2 style="color: #2586f5;">Liste des Ordonnances</h2></center>
+        <div class="col">
+            <div class="form-group">
+                <br> <br> <br>
+                <button type="submit" >Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <br><br>
 
-                </div>
-                <br>
-                <a href="{{ path('AddOrdo') }}" class=pull-right >+Ajouter Ordonnance</a>
-                <br> <br>
+    {% if odn %}
 
-                <table class="table table-striped table-hover"  align="left">
+                <table id="odn" class="table table-striped table-hover"  align="left">
                     <thead style="backgournd: #2586f5;" >
                     <tr>
                         <th>Id</th>
@@ -56,7 +61,8 @@
                             <td>
                                 <a href="{{ path('edit',{'id':i.id}) }}"> Update </a>
                                 |
-                                <a href="{{ path('Supprimer',{'id':i.id}) }}">Remove</a>
+                                <a href="{{ path('Supprimer',{'id':i.id}) }}"
+                                onclick="return confirm('Etes-vous sûr de supprimer cette Ordonnance?');">Remove</a>
                                 |
                                 <a href="{{ path('PdfOrdo',{'id':i.id})}}"> Download </a>
                             </td>
@@ -64,10 +70,8 @@
                     {% endfor %}
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
     <br> <br> <br> <br>
-
-
+    {% else %}
+        <p>Aucune Ordonnance trouvée!</p>
+    {% endif %}
 {% endblock  %}
