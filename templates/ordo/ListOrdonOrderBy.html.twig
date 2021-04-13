@@ -7,28 +7,43 @@
 
     <div class="form-row align-items-end" >
         <div class="col">
-            {{ form_row(form.Consultation) }}
+            {{ form_row(form.Patient) }}
         </div>
 
         <div class="col">
             <div class="form-group">
                 <br> <br> <br>
-                <button type="submit" >Rechercher</button>
+                <button type="submit"  class="btn btn-success" >Rechercher</button>
             </div>
         </div>
     </div>
     {{ form_end(form) }}
     <br><br>
 
-    {% if odn %}
+<section class="tables">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Form Elements -->
+            <div class="col-lg-12">
+                <div class="card">
 
-                <table id="odn" class="table table-striped table-hover"  align="left">
-                    <thead style="backgournd: #2586f5;" >
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">Liste des Ordonnances</h3>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+
+
+
+                            <table id="ord" class="table table-striped table-hover ">
+                                <thead>
+
                     <tr>
                         <th>Id</th>
-                        <th>Nom Medecin</th>
-                        <th>Prenom Medecin</th>
-                        <th>Téléphone Medecin</th>
+
+                        <th>email Medecin</th>
+
                         <th>Nom Patient</th>
                         <th>Prenom Patient</th>
                         <th>Date de Consultation</th>
@@ -45,9 +60,9 @@
                     {% for i in odn %}
                         <tr>
                             <td> {{ i.id}}</td>
-                            <td>{{ i.Medecin.nomMedecin }}</td>
-                            <td>{{ i.Medecin.prenomMed }}</td>
-                            <td>{{ i.Medecin.NumTel }}</td>
+
+                            <td>{{ i.Users.email }}</td>
+
                             <td>{{ i.Patient.nom }}</td>
                             <td>{{ i.Patient.prenom }}</td>
                             <td>{{ i.Consultation.dateC|date('Y-m-d') }}</td>
@@ -70,8 +85,16 @@
                     {% endfor %}
                     </tbody>
                 </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
     <br> <br> <br> <br>
-    {% else %}
-        <p>Aucune Ordonnance trouvée!</p>
-    {% endif %}
+
 {% endblock  %}

@@ -1,0 +1,40 @@
+{% extends 'basee.html.twig' %}
+{% block body %}
+
+
+    <div class="m-4">
+        <h2 style="color: #22aab1;">Liste des chambres</h2>
+    </div>
+
+
+    <table class="table table-striped table-hover">
+        <thead style="backgournd: #efefef;"> <!-- hedhi yaani table headers -->
+        <tr>
+            <th>Num de chambre</th>
+            <th>Num d'étage</th>
+            <th>Nombre de place</th>
+            <th>Service</th>
+            <th>Bloc</th>
+            <th>Catégorie</th>
+            <th>Update</th>
+            <th>Delete
+            </th>
+        </tr>
+        </thead>
+        <tbody> <!-- table body -->
+        {% for i in chambres %}
+            <tr>
+                <td> {{ i.num}}</td>
+                <td>{{ i.numetage }}</td>
+                <td>{{ i.nbrplace }}</td>
+                <td>{{ i.service }}</td>
+                <td>{{ i.bloc }}</td>
+                <td>{{ i.category.nom}}</td>
+                <td><a href="{{ path('edit_chambre',{'num':i.num}) }}">update</a> </td>
+                <td><a href="{{ path('remove_chambre',{'num':i.num}) }}">Remove</a> </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}

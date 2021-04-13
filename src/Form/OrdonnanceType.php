@@ -6,6 +6,7 @@ use App\Entity\Medecin;
 use App\Entity\Medicament;
 use App\Entity\Ordonnance;
 use App\Entity\Patient;
+use App\Entity\Users;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +18,9 @@ class OrdonnanceType extends AbstractType
     {
 
 $builder
-    ->add('Medecin')
+
+    ->add('Users',EntityType::class,['class'=>Users::class,'choice_label'=>'username'])
+    ->add('Users',EntityType::class,['class'=>Users::class,'choice_label'=>'email'])
 
     //->add('Medecin',EntityType::class,['class'=>Medecin::class,'choice_label'=>'nomMedecin'])
    // ->add('Medecin',EntityType::class,['class'=>Medecin::class,'choice_label'=>'prenomMed'])

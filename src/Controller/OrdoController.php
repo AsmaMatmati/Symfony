@@ -8,6 +8,7 @@ use App\Entity\Medicament;
 use App\Entity\Ordonnance;
 use App\Entity\Patient;
 use App\Form\OrdonnanceType;
+use App\Form\RechercheeType;
 use App\Form\RechercheType;
 use App\Repository\MedicamentRepository;
 use App\Repository\OrdonnanceRepository;
@@ -91,30 +92,24 @@ class OrdoController extends AbstractController
                 }
             }
 
-            $medc = $form['Medecin']->getData();
+            $medc = $form['Users']->getData();
             foreach ( $medc as $nomm) {
-                $us2 = $em->getRepository(Medecin::class)->findEntitiesByMedecin($nomm);
+                $us2 = $em->getRepository(Users::class)->findEntitiesByMedecin($nomm);
                 foreach ($us2 as $us2) {
-                    $ord->setMedecin($us2);
+                    $ord->setUsers($us2);
                 }
             }
 
 
-            $mec = $form['Medecin']->getData();
+            $mec = $form['Users']->getData();
             foreach ( $mec as $pre) {
-                $usp = $em->getRepository(Medecin::class)->findEntitiesByPreMedecin($pre);
+                $usp = $em->getRepository(Users::class)->findEntitiesByPreMedecin($pre);
                 foreach ($usp as $usp) {
-                    $ord->setMedecin($usp);
+                    $ord->setUsers($usp);
                 }
             }
 
-            $medc = $form['Medecin']->getData();
-            foreach ($medc as $Tel) {
-                $ust = $em->getRepository(Medecin::class)->findEntitiesByMedecin($Tel);
-                foreach ($ust as $ust) {
-                    $ord->setMedecin($ust);
-                }
-            }
+
 
 
             $pat = $form['Patient']->getData();
@@ -283,13 +278,18 @@ class OrdoController extends AbstractController
      */
     public function listOrdonorderby( Request $request)
     {
-        $odn=$this->getDoctrine()->getRepository(Ordonnance::class)->listOrdonorderbyDate();
-        $form = $this->createForm(RechercheType::class);
+        $ord = $this->getDoctrine()->getRepository(Ordonnance::class)->findAll();
+        $odn=$this->getDoctrine()->getRepository(Ordonnance::class)->listOrdonorderbyNomm();
+        $form = $this->createForm(RechercheeType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted())
         {
-            $dateC = $form->getData()->getConsultation();
-            $ordResult = $this->getDoctrine()->getRepository(Ordonnance::class)->recherche($dateC);
+            $nom = $form['Patient']->getData();
+            if ( $nom=="") {
+            $ordResult = $this->getDoctrine()->getRepository(Ordonnance::class)->findAll();
+        } else {
+            $ordResult = $this->getDoctrine()->getRepository(Ordonnance::class)->recherche($nom->getNom());
+        }
             return $this->render('ordo/ListOrdonOrderBy.html.twig', array('odn' => $ordResult,'form' => $form->createView()));
 
         }
@@ -305,6 +305,8 @@ class OrdoController extends AbstractController
     public function PdfOrdo($id)
 
     {
+        $i=0;
+        $i=$i+1;
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
@@ -321,19 +323,24 @@ class OrdoController extends AbstractController
         $dompdf->loadHtml($html);
 
         // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A6', 'portrait');
+        $dompdf->setPaper('A4', 'portrait');
 
         // Render the HTML as PDF
         $dompdf->render();
 
-        // Output the generated PDF to Browser (force download)
-        $filename ="Ordonnance";
-        $dompdf->stream("'.$filename.'.pdf", [
-            "Attachment" => true,
-            "images"=>true
-        ]);
+        // Store PDF Binary Data
+        $output = $dompdf->output();
 
+        // In this case, we want to write the file in the public directory
+
+        $publicDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads';
+        // e.g /var/www/project/public/mypdf.pdf
+        $pdfFilepath =  $publicDirectory . '/Ordonnance'.$i.'pdf';
+
+        // Write file to the desired path
+        file_put_contents($pdfFilepath, $output);
+
+        // Send some text response
+        return new Response("The PDF file has been succesfully generated !");
     }
-
-
 }

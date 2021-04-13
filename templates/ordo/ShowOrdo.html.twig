@@ -15,38 +15,44 @@
         </div>
     {% endfor %}
 
-    <div class="container">
+<div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+<br>
+            <a href="{{ path('AddOrdo') }}" class=pull-right >+Ajouter Ordonnance</a>
+
+            <ul class="list-unstyled">
+                <li><a href="#exampleDropdown" aria-expanded="false" data-toggle="collapse"> Trier Par Date: </a>
+                    <ul id="exampleDropdown" class="collapse list-unstyled ">
+                        <li><a href="{{ path('ListOrdoByDateDESC') }}"> Date (DESC)  </a></li>
+                        <li><a href="{{ path('ListOrdoByDateASC') }}"> Date (ASC)  </a></li>
+                    </ul>
+                </li>
+            </ul>
+
+<section class="tables">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col align-self-center">
+            <!-- Form Elements -->
+            <div class="col-lg-12">
+                <div class="card">
 
-            <br>
-    <div  class="m-4">
-        <center><h2 style="color: #2586f5;">Liste des Ordonnances</h2></center>
-        <br><br>
-    </div>
-    <br>
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">Liste des Ordonnances</h3>
+                    </div>
+                    <div class="card-body">
 
-    <a href="{{ path('AddOrdo') }}" class=pull-right >+Ajouter Ordonnance</a>
+                        <div class="table-responsive">
 
-
-                <ul class="list-unstyled">
-                    <li><a href="#exampleDropdown" aria-expanded="false" data-toggle="collapse"> Trier Par Date: </a>
-                        <ul id="exampleDropdown" class="collapse list-unstyled ">
-                            <li><a href="{{ path('ListOrdoByDateDESC') }}"> Date (DESC)  </a></li>
-                            <li><a href="{{ path('ListOrdoByDateASC') }}"> Date (ASC)  </a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <br>
 
 
                 <table id="ord" class="table table-striped table-hover ">
-                    <thead style="backgournd: #2586f5;" >
+                    <thead>
         <tr>
             <th>Id</th>
-            <th>Nom Medecin</th>
-            <th>Prenom Medecin</th>
-            <th>Téléphone Medecin</th>
+
+            <th>Email Medecin</th>
+
             <th>Nom Patient</th>
             <th>Prenom Patient</th>
             <th>Date de Consultation</th>
@@ -56,16 +62,16 @@
             <th>Nombre de doses</th>
             <th>Nombre de fois/jour</th>
             <th>Nombre de paquets</th>
-            <th >Actions</th>
+            <th colspan="3">Actions</th>
         </tr>
         </thead>
         <tbody> <!-- table body -->
         {% for i in ord %}
             <tr>
                 <td> {{ i.id}}</td>
-                <td>{{ i.Medecin.nomMedecin }}</td>
-                <td>{{ i.Medecin.prenomMed }}</td>
-                <td>{{ i.Medecin.NumTel }}</td>
+
+                <td>{{ i.Users.email  }}</td>
+
                 <td>{{ i.Patient.nom }}</td>
                 <td>{{ i.Patient.prenom }}</td>
                 <td>{{ i.Consultation.dateC|date('Y-m-d') }}</td>
@@ -77,21 +83,30 @@
                 <td>{{ i.NbrPaquets }} paquet(s)</td>
 
                 <td>
-                    <a href="{{ path('edit',{'id':i.id}) }}"> Update </a>
+                    <a href="{{ path('edit',{'id':i.id}) }}"> <i class="fas fa-pen"></i></a>
                     |
                     <a href="{{ path('Supprimer',{'id':i.id}) }}"
-                       onclick="return confirm('Etes-vous sûr de supprimer cette Ordonnance?');">Remove</a>
+                       onclick="return confirm('Etes-vous sûr de supprimer cette Ordonnance?');"><i class="fas fa-trash"></i></a>
                     |
-                    <a href="{{ path('PdfOrdo',{'id':i.id})}}"> Download </a>
+                    <a href="{{ path('PdfOrdo',{'id':i.id})}}"> <i class="fas fa-file-download"></i> </a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
+
+</section>
+        </div>
     </div>
+</div>
+
     <br> <br> <br> <br>
+            {% endblock  %}
 
 
-{% endblock  %}

@@ -1,9 +1,9 @@
 
-{#<div class=""><img src="{{ asset("../../public/img/Logo1.jpg") }}" alt="" height="60" width="60"></div>#}
+<div class=""><img src="{{ asset("../../public/img/Logo1.jpg") }}" alt="" height="60" width="60"></div>
 <div >
     <font size="-2"><b>Date consultation: </b>{{ ord.Consultation.dateC|date('Y-m-d') }}</font><br>
-    <font size="-2"><b>Nom médecin: </b>  {{ ord.Medecin.nomMedecin }} {{ ord.Medecin.prenomMed }}</font><br>
-    <font size="-2"><b>Téléphone: </b>   {{ ord.Medecin.NumTel }}</font><br>
+    <font size="-2"><b>Email médecin: </b>  {{ ord.Users.email }}</font><br>
+    <br>
 
 </div>
 

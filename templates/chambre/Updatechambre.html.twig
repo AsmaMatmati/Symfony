@@ -1,0 +1,16 @@
+{% extends 'basee.html.twig' %}
+{% form_theme fChambre 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+    <h1>modification d'une chambre</h1>
+
+
+
+    {{ form_start(fChambre) }}
+
+
+    {{ form_widget(fChambre) }}
+    <button type="submit" class="btn btn-success" > modifier la chambre</button>
+    {{ form_end(fChambre) }}
+
+{% endblock %}

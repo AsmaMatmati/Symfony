@@ -51,6 +51,11 @@ class Medicament
      */
    private $ordonnaces;
 
+   /**
+    * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="medicaments")
+    */
+   private $Categorie;
+
 
     public function getId(): ?int
     {
@@ -147,4 +152,16 @@ class Medicament
     }
 
 */
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->Categorie;
+    }
+
+    public function setCategorie(?Categorie $Categorie): self
+    {
+        $this->Categorie = $Categorie;
+
+        return $this;
+    }
 }

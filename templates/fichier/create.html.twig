@@ -1,0 +1,25 @@
+{% extends 'baseee.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <br> <br>
+    <h1> création d'un fichier </h1>
+    <br> <br>
+
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+
+    {{ form_end(form) }}
+
+    <script>
+        document.getElementById("fichier_image").onchange = function() {
+            let file = document.getElementById("fichier_image").files[0];
+            console.log('Files', file.name)
+            document.getElementsByClassName("custom-file-label")[0].innerText = file.name;
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'basee.html.twig' %}
+
+{% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+
+
+        {%for message in app.flashes('message') %}
+        <div class="alert alert-sucess" role="alert">
+            {{ message }}
+
+        </div>
+        {% endfor%}
+        <h1> contact</h1>
+
+        {{ form_start(formContact) }}
+
+        {{ form_widget(formContact) }}
+        {{ form_end(formContact) }}
+
+
+{% endblock %}

@@ -7,34 +7,55 @@
         <script src="{{ asset("https://kit.fontawesome.com/ae15aac6fb.js") }}" crossorigin="anonymous"></script>
 
 
+        <section class="forms">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Form Elements -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-close">
+                                <div class="dropdown">
+                                    <button type="button" id="closeCard5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard5" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                                </div>
+                            </div>
+                            {% for message in app.flashes('info') %}
+                                <div class="alert alert-success">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
 
-        {% for message in app.flashes('info') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-        {% endfor %}
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">Ajouter Ordonnance</h3>
+                            </div>
+                            <div class="card-body">
 
 
+                                {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                                {{ form_widget(form) }}
+                                {{ form_errors(form)}}
 
-
-
-        <div class="container">
-    <div class="row">
-        <div class="col align-self-center">
-
-        <br>
-        <center><h2 style="color: #2586f5;">Ajouter Ordonnance</h2></center>
-        <br>
-        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
-
-        {{ form_widget(form) }}
-        <br>
-        <button type="submit" class="btn btn-success" > Ajouter</button>
-        {{ form_end(form) }}
-        </div>
-    </div>
-</div>
+                                <div class="line"></div>
+                                <div class="form-group ">
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-success" > Ajouter</button>                            </div>
+                                </div>
+                                <br>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <br> <br> <br> <br>
 
     {% endblock %}
+
+
+
+
+
+
+
 

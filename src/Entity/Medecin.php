@@ -35,15 +35,6 @@ class Medecin
      */
     private $Num_Tel;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Ordonnance::class, mappedBy="Medecin")
-     */
-    private $ordonnances;
-
-    public function __construct()
-    {
-        $this->ordonnances = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -89,35 +80,6 @@ class Medecin
 
 
 
-    /**
-     * @return Collection|Ordonnance[]
-     */
-    public function getOrdonnances(): Collection
-    {
-        return $this->ordonnances;
-    }
-
-    public function addOrdonnance(Ordonnance $ordonnance): self
-    {
-        if (!$this->ordonnances->contains($ordonnance)) {
-            $this->ordonnances[] = $ordonnance;
-            $ordonnance->setMedecin($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrdonnance(Ordonnance $ordonnance): self
-    {
-        if ($this->ordonnances->removeElement($ordonnance)) {
-            // set the owning side to null (unless already changed)
-            if ($ordonnance->getMedecin() === $this) {
-                $ordonnance->setMedecin(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function __toString()
     {

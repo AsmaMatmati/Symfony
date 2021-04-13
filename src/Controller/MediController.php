@@ -239,6 +239,19 @@ class MediController extends AbstractController
 
     }
 
+    /**
+     * @param MedicamentRepository $repository
+     *@return \symfony\Component\HttpFoundation\Response
+     * @Route("/ShowOnly", name="ShowOnly")
+     */
+    public function ShowOnly()
+    {
+
+        $med = $this->getDoctrine()->getRepository(Medicament::class)->findAll();
+        return $this->render("medi/ShowOnly.html.twig", array("medic" => $med));
+
+    }
+
 
 
     /**

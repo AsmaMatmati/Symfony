@@ -1,0 +1,10 @@
+swiftmailer:
+    url: '%env(MAILER_URL)%'
+    spool: { type: 'memory' }
+    transport: gmail
+    host: smtp.gmail.com
+    port: 465
+    auth_mode: login
+    username: amina.kechida@esprit.tn
+    password: 181JFT3007
+    encryption: ssl

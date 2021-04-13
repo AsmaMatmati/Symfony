@@ -49,7 +49,10 @@
                     <!-- Navbar Header-->
                     <div class="navbar-header">
                         <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                            <div class="brand-text d-none d-lg-inline-block"><span>Soft </span><strong>Health</strong></div>
                             <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
+                        <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+
                     </div>
                     <!-- Navbar Menu -->
                     <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
@@ -134,7 +137,7 @@
             <div class="sidebar-header d-flex align-items-center">
                 <div class="avatar"><img src="{{ asset("img/Asma.jpg") }}" alt="..." class="img-fluid rounded-circle"></div>
                 <div class="title">
-                    <h1 class="h4">MATMATI Asma</h1>
+                    <h1 class="h4">Asma MATMATI</h1>
                     <p>Pharmacienne</p>
                 </div>
             </div>
@@ -155,12 +158,17 @@
                     <ul id="example" class="collapse list-unstyled ">
                         <li><a href="{{ path('ShowOrdo') }}"> <i class="fas fa-file-medical-alt"></i>Liste Ordonnances </a></li>
                         <li><a href="{{ path('AddOrdo') }}"> <i class="fas fa-file-medical-alt"></i>Ajouter Ordonnances </a></li>
+                        <li><a href="{{ path('listOrdonorderby') }}"> <i class="fas fa-file-medical-alt"></i>Filtrer Ordonnances </a></li>
+
                     </ul>
                 </li>
                 <li><a href="{{ path('main') }}">  <i class="fas fa-sign-in-alt"></i>Login page </a></li>
             </ul>
         </nav>
-        <div class="content-inner" style="background-color: #f6f6f6;">
+        <div class="content-inner" style="background-color: #eef5f9;">
+            <div class="container-fluid card">
+                <h2 class="no-margin-bottom text-right" style="padding: 20px 0;">Dashboard</h2>
+            </div>
             <!-- Page Header-->
 
             {% block content %}

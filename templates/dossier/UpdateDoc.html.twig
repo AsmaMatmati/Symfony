@@ -1,0 +1,16 @@
+{% extends 'baseee.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+    <h1>modification un dossier</h1>
+
+
+
+    {{ form_start(form) }}
+
+
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-success" > modifier le dossier</button>
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'basee.html.twig' %}
+{% block body %}
+    <div class="m-4">
+        <h2 style="color: #22aab1;">Liste des catégories</h2>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead style="backgournd: #efefef;"> <!-- hedhi yaani table headers -->
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+                <th>description</th>
+                <th>update</th>
+                <th>remove</th>
+            </tr>
+        </thead>
+        <tbody> <!-- table body -->
+        {% for c in categorys %}
+            <tr>
+                <td> {{ c.id}}</td>
+                <td>{{ c.nom }}</td>
+                <td>{{ c.description }}</td>
+                <td><a href="{{ path('edit_category',{'id':c.id}) }}">update</a></td>
+                <td><a href="{{ path('remove_category',{'id':c.id}) }}">Remove</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}

@@ -52,9 +52,6 @@ class Ordonnance
     private $nbr_paquets;
 
 
-
-
-
     /**
      * @ORM\ManyToOne(targetEntity=Medicament::class, inversedBy="ordonnace")
      */
@@ -71,14 +68,17 @@ class Ordonnance
     private $Patient;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Medecin::class, inversedBy="ordonnances")
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="ordonnances")
      */
-    private $Medecin;
+    private $Users;
 
-    public function __construct()
-    {
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="ordonnances")
+     */
+    private $Categorie;
 
-    }
+
+
 
     public function getId(): ?int
     {
@@ -145,17 +145,7 @@ class Ordonnance
         return $this;
     }
 
-    public function getMedecin(): ?Medecin
-    {
-        return $this->Medecin;
-    }
 
-    public function setMedecin(?Medecin $Medecin): self
-    {
-        $this->Medecin = $Medecin;
-
-        return $this;
-    }
 
     /**
      * @return mixed
@@ -219,6 +209,30 @@ class Ordonnance
     public function setNbrFois($nbr_fois): void
     {
         $this->nbr_fois = $nbr_fois;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->Users;
+    }
+
+    public function setUsers(?Users $Users): self
+    {
+        $this->Users = $Users;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->Categorie;
+    }
+
+    public function setCategorie(?Categorie $Categorie): self
+    {
+        $this->Categorie = $Categorie;
+
+        return $this;
     }
 
 

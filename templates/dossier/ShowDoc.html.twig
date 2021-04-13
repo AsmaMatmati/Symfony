@@ -1,0 +1,35 @@
+{% extends 'baseee.html.twig' %}
+{% block title %} {% endblock  %}
+
+{% block body %}
+    <div class="m-4">
+        <h2 style="color: #22aab1;">Liste des dossiers</h2>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead style="backgournd: #efefef;"> <!-- hedhi yaani table headers -->
+        <tr>
+            <th>id</th>
+            <th>description</th>
+            <th>date de creation</th>
+            <th>fichiers</th>
+            <th>update</th>
+            <th>remove</th>
+        </tr>
+        </thead>
+        <tbody> <!-- table body -->
+
+        <br> <br> <br> <br>
+        {% for c in dossiers %}
+            <tr>
+                <td> {{ c.id}}</td>
+                <td> {{ c.description}}</td>
+                <td> {{ c.dateCreation |date() }}</td>
+
+                <td><a href="{{ path('fichier_show') }}">fichiers</a></td>
+                <td><a href="{{ path('edit_dossier',{'id':c.id}) }}">update</a></td>
+                <td><a href="{{ path('remove_dossier',{'id':c.id}) }}">Remove</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}

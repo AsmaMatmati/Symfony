@@ -1,0 +1,34 @@
+{% extends 'baseee.html.twig' %}
+{% block title %} {% endblock  %}
+
+{% block body %}
+    <div class="m-4">
+        <h2 style="color: #22aab1;">Liste des fichiers</h2>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead style="backgournd: #efefef;">
+        <tr>
+            <th>id</th>
+            <th>description</th>
+            <th>fichier</th>
+            <th>dossier</th>
+            <th>update</th>
+            <th>remove</th>
+        </tr>
+        </thead>
+        <tbody> <!-- table body -->
+
+        {% for c in fichiers %}
+            <tr>
+                <td> {{ c.id}}</td>
+                <td> {{ c.description}}</td>
+                <td>{% if c.dossier %} <a href="/uploads/{{ c.dossier.description}}/{{ c.file}}" target="_blank">{{ c.file}}</a> {% endif %}</td>
+                <td> {{ c.dossier.id|default(0)}}</td>
+
+                <td><a href="{{ path('edit_fichier',{'id':c.id}) }}">update</a></td>
+                <td><a href="{{ path('remove_fichier',{'id':c.id}) }}">Remove</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}
